@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edición usuarios</title>
+</head>
+<body>
+    <div class="navbar">
+      <img src="../../../../assets/images/Logo_GsA-removebg-preview.png" class="logo">
+      <ul>
+          <li><a routerLink="../../home">Inicio</a></li>
+          <li><a routerLink="../../anuncios">Anuncios</a></li>
+          <li><a routerLink="../../recomendaciones">Recomendaciones</a></li>
+          <li><a routerLink="../../admin">Mis actividades</a></li>
+          <li id="liFinLinea"><a (click)="this.sessionStorageService.clear()">Cerrar Sesion</a></li>
+      </ul>
+    </div>
+    <section id="Admin_usuarios_edit">
+		<div class="container">
+			<div class="row row-pb-md">
+				<div class="col-md-8 heading">
+					<h1>Edición</h1>
+					<p class="sub">Edita los datos del usuario con un par de teclas y clicks</p>
+					<p class="subtle-text">Editar</p>
+				</div>
+			</div>
+			<div class="row">
+				<div>
+					<form (ngSubmit)="onSubmit()" #usuarioForm="ngForm">
+						<div class="form-group">
+                            <label for="selRol" id="sr-only"></label>
+                            <select class="form-control op" placeholder="Elija el rol de la persona" id="selRol" name="selRol" [(ngModel)]="usuario.fk_tipo_user" required>
+                                <option value="" disabled="disabled">Elija el rol de la persona</option>
+								<option *ngFor="let rol of tiposusuarios | async" value='{{rol.cod_tipo_user}}'>{{rol.tipo_user}}</option>
+                            </select>
+						</div>
+						<div class="form-group">
+							<label for="nom1" class="sr-only">Primer nombre</label>
+    						<input type='text' class='form-control' [(ngModel)]="usuario.nom1_user" placeholder='Primer nombre' id='nom1' name='nom1' required>
+						</div>
+						<div class="form-group">
+							<label for="nom2" class="sr-only">Segundo nombre</label>
+    						<input type='text' class='form-control' [(ngModel)]="usuario.nom2_user" placeholder='Segundo nombre (No obligatorio)' id='nom2' name='nom2'>
+						</div>
+						<div class="form-group">
+							<label for="apel1" class="sr-only">Primer apellido</label>
+    						<input type='text' class='form-control' [(ngModel)]="usuario.ape1_user" placeholder='Primer apellido' id='apel1' name='apel1' required>
+						</div>
+						<div class="form-group">
+							<label for="apel2" class="sr-only">Segundo apellido</label>
+    						<input type='text' class='form-control' [(ngModel)]="usuario.ape2_user" placeholder='Segundo apellido (No obligatorio)' id='apel2' name='apel2'>
+						</div>
+						<div class="form-group">
+							<label for="correo_sena_usersEdit" class="sr-only">Correo electrónico brindado por el sena</label>
+    						<input type='email' class='form-control' [(ngModel)]="usuario.correo_sena_user" placeholder='Correo electrónico brindado por el sena' id='correo_sena_usersEdit' name='correo' required>
+						</div>
+						<div class="form-group">
+                            <label for="selAntecedentes" id="sr-only"></label>
+                            <select class="form-control op" placeholder="Tiene condiciones médicas que debamos conocer?" id="selAntecedentes" name="selAntecedentes" [(ngModel)]="usuario.fk_anteced_salud_sel" required>
+                                <option value="" disabled="disabled">Tiene condiciones médicas que debamos conocer?</option>
+								<option *ngFor="let anteced of antecedentes | async" value='{{anteced.antecedente}}'>{{anteced.antecedente}}</option>
+                            </select>
+						</div>
+						<div class="form-group">
+							<label for="Antecedentes_salud" class="sr-only"></label>
+    						<input type='text' class='form-control' [(ngModel)]="usuario.anteced_salud_inp" placeholder='Su condición médica no aparece arriba o tiene varias? Descríbala(s) aquí' id='Antecedentes_input' name='Antecedentes_input'>
+						</div>
+
+						<div class="form-group">
+							<label for="estado_user" class="sr-only"></label>
+							<select class="form-control op" placeholder="Estado del usuario dentro del sistema" id="estado_user" name="estado_user" [(ngModel)]="usuario.estado_user" required>
+								<option value="" disabled="disabled">Estado del usuario dentro del sistema</option>
+                                <option value="1">Activo</option>
+                                <option value="0">Inactivo</option>
+                            </select>
+						</div>
+						<div class="form-group" style="margin-top: 3%;">
+							<!-- <input type="submit" value="Actualizar información" class="Subm" id="submit-ed"> -->
+                            <!-- <button type="submit" class="Subm" id="submit-ed" [disabled]="!usuarioForm.form.valid">Actualizar información</button> -->
+                <input type="submit" value="Actualizar información" class="Subm" id="submit-ed">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+	<app-footer></app-footer>
+</body>
+</html>
