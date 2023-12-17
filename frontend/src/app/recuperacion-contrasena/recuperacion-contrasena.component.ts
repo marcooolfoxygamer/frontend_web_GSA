@@ -45,9 +45,13 @@ export class RecuperacionContrasenaComponent implements OnInit {
   }
 
   onSubmit_sec(){
-    this.usuarioService.actualizarContrasena(this.usuario).subscribe(data => {
-      alert(data)
-      this.router.navigate(['../iniciar_sesion'])
-    })
+    if (!this.usuario.contrasena){
+      alert('Por favor, digite la nueva contraseña con la que protegerá su cuenta');
+    } else {
+      this.usuarioService.actualizarContrasena(this.usuario).subscribe(data => {
+        alert(data)
+        this.router.navigate(['../iniciar_sesion'])
+      })
+    }
   }
 }

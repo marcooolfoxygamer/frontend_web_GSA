@@ -1,0 +1,12 @@
+<div *ngIf="no_iniciado">
+    <app-navbar-general></app-navbar-general>
+</div>
+<div *ngIf="administrador">
+    <app-navbar-log-administrador></app-navbar-log-administrador>
+</div>
+<div *ngIf="aprendiz">
+    <app-navbar-log-aprendiz></app-navbar-log-aprendiz>
+</div>
+<div *ngIf="instructor">
+    <app-navbar-log-instructor></app-navbar-log-instructor>
+</div>

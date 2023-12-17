@@ -7,13 +7,14 @@
     <title>Recuperación de contraseña</title>
 </head>
 <body>
-    <app-navbar-general></app-navbar-general>
+    <!-- <app-navbar-general></app-navbar-general> -->
+	<app-navbars></app-navbars>
     <section id="Recup_contra" *ngIf="subm == false">
 		<div class="container">
 			<div class="row row-pb-md">
 				<div class="col-md-8 heading">
 					<h1>Recuperar contraseña</h1>
-					<p class="sub">Bienvenid@ a nuestro formulario de recuperación de contraseñas. Por favor, digite la información que le pedimos a continuación.</p>
+					<p class="sub">Bienvenid&#64; a nuestro formulario de recuperación de contraseñas. Por favor, digite la información que le pedimos a continuación.</p>
 					<p class="subtle-text">Recuperar contraseña</p>
 				</div>
 			</div>
@@ -42,7 +43,7 @@
 			<div class="row row-pb-md">
 				<div class="col-md-8 heading">
 					<h1>Recuperar contraseña</h1>
-					<p class="sub-doub">Bienvenid@</p>
+					<p class="sub-doub">Bienvenid&#64;</p>
 					<p class="sub">Por favor, digite la nueva contraseña con la que asegurará su cuenta.</p>
 					<p class="subtle-text">Recuperar contraseña</p>
 				</div>
@@ -55,7 +56,7 @@
 							<input type="password" class="form-control ini" placeholder="Nueva contraseña" id="password_registro" maxlength="15" name="pass" [(ngModel)]="usuario.contrasena" required>
 						</div>
 						<div class="form-group-ini" style="margin-top: 3%;">
-							<button type="submit" value="Recuperar_contraseña" class="Subm Recup_contra" id="submit-Recup_contra" name="recuperando_contra" [disabled]="!usuarioForm.form.valid">Recuperar contraseña</button>
+							<button type="submit" value="Recuperar_contraseña" class="Subm Recup_contra" id="submit-Recup_contra" name="recuperando_contra">Recuperar contraseña</button>
 						</div>
 					</form>
 				</div>

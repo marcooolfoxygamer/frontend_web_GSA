@@ -7,7 +7,8 @@
     <title>Listado de anuncios del sistema</title>
 </head>
 <body>
-    <div class="navbar">
+  <app-navbars></app-navbars>
+    <!-- <div class="navbar">
         <img src="../../../../assets/images/Logo_GsA-removebg-preview.png" class="logo">
         <ul>
             <li><a routerLink="../home">Inicio</a></li>
@@ -16,7 +17,7 @@
             <li><a routerLink="../admin">Mis actividades</a></li>
             <li id="liFinLinea"><a (click)="this.sessionStorageService.clear()">Cerrar Sesion</a></li>
         </ul>
-    </div>
+    </div> -->
     
     <section id="Admin_anuncios">
 		  <div class="container">
@@ -53,7 +54,7 @@
                     <div class='confirm-box'>
                       <br>
                       <h2>Confirmación de decisión</h2>
-                      <p>Está segur@ de que quiere eliminar el anuncio?</p>
+                      <p>Está segur&#64; de que quiere eliminar el anuncio?</p>
                       <br>
                       <button id='confirma' (click)="isConfirm(true)">Si</button>
                       <button id='denega' (click)='isConfirm(false)'>No</button>

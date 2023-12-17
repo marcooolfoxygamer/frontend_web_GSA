@@ -15,6 +15,7 @@ export class PlanificadorComponent implements OnInit {
   planificador = new PlanificadorModel("","");
   musculos: Observable<MusculosModel[]> | undefined;
   ejerc_musc: Observable<Ejercicios_MusculosModel[]> | undefined;
+  musculo_escogido= '';
 
   constructor(
     private planificadorService: PlanificadorService,
@@ -23,6 +24,7 @@ export class PlanificadorComponent implements OnInit {
     private router: Router
   ) { }
 
+  url = this.planificadorService.BASE_URL+'/images/ejercicios_gifs/'
   subm:boolean = false
 
   ngOnInit() {
@@ -45,6 +47,7 @@ export class PlanificadorComponent implements OnInit {
     this.planificadorService.agregarPlanificador(this.planificador).subscribe(data => {
       if (data == 'Se agregó correctamente') {
         this.ejerc_musc = this.planificadorService.obtenerEjercicios_Musculo(this.planificador.musculo)
+        this.musculo_escogido = this.planificador.musculo;
         this.subm=true
       }
     })

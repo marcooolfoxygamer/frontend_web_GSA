@@ -28,6 +28,10 @@ import { BienvenidaInstructorComponent } from './instructor/bienvenida-instructo
 import { AgregarAsistenciaComponent } from './instructor/asistencia/agregar-asistencia/agregar-asistencia.component';
 import { ListarAsistenciaComponent } from './instructor/asistencia/listar-asistencia/listar-asistencia.component';
 import { EditarAsistenciaComponent } from './instructor/asistencia/editar-asistencia/editar-asistencia.component';
+import { NavbarLogAprendizComponent } from './shared/navbar-log-aprendiz/navbar-log-aprendiz.component';
+import { NavbarLogInstructorComponent } from './shared/navbar-log-instructor/navbar-log-instructor.component';
+import { NavbarLogAdministradorComponent } from './shared/navbar-log-administrador/navbar-log-administrador.component';
+import { NavbarsComponent } from './shared/navbars/navbars.component';
 
 
 
@@ -54,7 +58,11 @@ import { EditarAsistenciaComponent } from './instructor/asistencia/editar-asiste
     BienvenidaInstructorComponent,
     AgregarAsistenciaComponent,
     ListarAsistenciaComponent,
-    EditarAsistenciaComponent
+    EditarAsistenciaComponent,
+    NavbarLogAprendizComponent,
+    NavbarLogInstructorComponent,
+    NavbarLogAdministradorComponent,
+    NavbarsComponent
   ],
   imports: [
     BrowserModule,

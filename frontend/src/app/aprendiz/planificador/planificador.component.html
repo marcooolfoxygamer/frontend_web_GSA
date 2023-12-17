@@ -7,7 +7,8 @@
     <title>Planificador</title>
 </head>
 <body>
-    <div class="navbar">
+  <app-navbars></app-navbars>
+    <!-- <div class="navbar">
       <img src="../../../../assets/images/Logo_GsA-removebg-preview.png" class="logo">
       <ul>
           <li><a routerLink="../home">Inicio</a></li>
@@ -16,7 +17,7 @@
           <li><a routerLink="../aprendiz">Mis actividades</a></li>
           <li id="liFinLinea"><a (click)="this.sessionStorageService.clear()">Cerrar Sesion</a></li>
       </ul>
-    </div>
+    </div> -->
 
     <section id="Planificador">
       <div class="container">
@@ -45,16 +46,17 @@
           </div>
         </div>
         <section *ngIf="subm">
-          <div id='h_text_musc'><p id='texto_musc_ejerc'>Ejercicios para entrenar {{ planificador.musculo }} </p></div>
+          <div id='h_text_musc'><p id='texto_musc_ejerc'>Ejercicios para entrenar {{ musculo_escogido }} </p></div>
           <div id='cont_Ejercicios'>
             <article class='ejercicio' *ngFor="let iteracion of ejerc_musc | async">
               <div class='image-wrap'>
-                  <img src='../../../assets/images/ejercicios/{{ iteracion.imagen_ejerc }}' alt='imagen ejercicio'>
+                <img [src]="url+iteracion.imagen_ejerc" alt="{{iteracion.pkfk_ejercicio}}">
+                  <!-- <img src='../../../assets/images/ejercicios/{{ iteracion.imagen_ejerc }}' alt='imagen ejercicio'> -->
               </div>
               <div class='ejercicio-info'>
                   <p class='ej-inf-p1'>{{ iteracion.pkfk_ejercicio }}</p>
                   <p class='ej-inf-p2' *ngIf="iteracion.pkfk_ejercicio == 'Leg-press'">
-                    Sentad@ en el la silla de la prensa, con los pies planos en la plataforma y los hombros separados,
+                    Sentad&#64; en el la silla de la prensa, con los pies planos en la plataforma y los hombros separados,
                     suelte el seguro manual y baje lentamente la carga llevando las rodillas hacia el pecho. Cuando las rodillas estén en un ángulo de 90°,
                     haga una pausa y luego suba lentamente el peso. Para proteger las rodillas, detenga el movimiento justo antes de que las piernas
                     estén completamente extendidas. Durante el movimiento, no levante los glúteos de la silla.
@@ -65,12 +67,12 @@
                     Luego, extienda las piernas hasta que estén completamente extendidas. Aguante la carga un momento contrayendo los cuádriceps, y luego vuelva a la posición baja.
                   </p>
                   <p class='ej-inf-p2' *ngIf="iteracion.pkfk_ejercicio == 'Copa triceps'">
-                    Sentad@ en una silla, con la espalda recta, agarrando una mancuerna con ambas manos, las palmas de las manos en el interior de un disco,
+                    Sentad&#64; en una silla, con la espalda recta, agarrando una mancuerna con ambas manos, las palmas de las manos en el interior de un disco,
                     coloque la mancuerna sobre la cabeza, con los brazos extendidos y los tríceps bien contraídos. Baje los antebrazos por detrás de la cabeza hasta que los codos formen un ángulo de 90°.
                     Luego extienda los antebrazos, volviendo a la posición inicial.
                   </p>
                   <p class='ej-inf-p2' *ngIf="iteracion.pkfk_ejercicio == 'Rompecraneos'">
-                    Acostad@ en la silla, con los pies en el suelo o en el la silla, sostenga la barra sobre su pecho, agarre en posición de pronación,
+                    Acostad&#64; en la silla, con los pies en el suelo o en el la silla, sostenga la barra sobre su pecho, agarre en posición de pronación,
                     las manos ligeramente más cerradas que el ancho de los hombros. Posteriormente, flexione lentamente los antebrazos sin separar demasiado los codos,
                     llevando la barra a la parte superior de la cabeza. Luego vuelva a la posición inicial y repita el proceso.
                   </p>
@@ -90,10 +92,10 @@
                   </p>
                   <p class='ej-inf-p2' *ngIf="iteracion.pkfk_ejercicio == 'Curl nordico'">
                     Acuéstese boca abajo en la máquina de 'curl de piernas tumbado o acostado' con la parte trasera de los tobillos presionando el reposapiés. Agarre los reposamanos.
-                    Posteriormente, apoyad@ firmemente en la silla, flexione las piernas lo máximo posible. Mantenga la carga por un momento en la posición alta contrayendo los músculos isquiotibiales, luego vuelva lentamente a la posición inicial.
+                    Posteriormente, apoyad&#64; firmemente en la silla, flexione las piernas lo máximo posible. Mantenga la carga por un momento en la posición alta contrayendo los músculos isquiotibiales, luego vuelva lentamente a la posición inicial.
                   </p>
                   <p class='ej-inf-p2' *ngIf="iteracion.pkfk_ejercicio == 'Jalon al pecho'">
-                    Sentad@, con los muslos bajo las partes acolchadas, la barra agarrada en supinación, manos separadas a la anchura de los hombros. Manteniendo la espalda recta.
+                    Sentad&#64;, con los muslos bajo las partes acolchadas, la barra agarrada en supinación, manos separadas a la anchura de los hombros. Manteniendo la espalda recta.
                     Tire de la barra hasta la parte superior del pecho. Mantenga la contracción por un momento, los hombros bien atrás antes de volver lentamente a la posición inicial.
                   </p>
                   <p class='ej-inf-p2' *ngIf="iteracion.pkfk_ejercicio == 'Remo brazo'">
