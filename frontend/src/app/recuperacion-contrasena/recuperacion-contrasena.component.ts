@@ -29,7 +29,7 @@ export class RecuperacionContrasenaComponent implements OnInit {
     if (this.usuario.correo_sena_user == '') {
       alert("Por favor, digite el correo electrónico de la cuenta");
     }
-    else if (this.usuario.id_user == '') {
+    else if (!this.usuario.id_user) {
       alert("Por favor, digite su número de identificación");
     }
     else {
