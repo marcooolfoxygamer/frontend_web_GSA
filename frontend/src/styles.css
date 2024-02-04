@@ -194,7 +194,7 @@
 }
 
 /* Espacios de compartimentos para cada espacio (o página) dentro del sistema */
-#Anuncios, #Recomendaciones, #Registrarse, #IniciarSesion, #Recup_contra, #Apre_Inst_Admin, #Planificador, #Asistencia, #Admin_anuncios, #Admin_anuncios_edit, #Admin_usuarios, #Admin_usuarios_edit{
+#Anuncios, #Recomendaciones, #Registrarse, #IniciarSesion, #Recup_contra, #Apre_Inst_Admin, #Planificador, #Asistencia, #Admin_anuncios, #Admin_anuncios_edit, #Admin_usuarios, #Admin_usuarios_edit, #Admin_reportes{
     padding: 4em 0;
     clear: both;
     font-weight: 400;
@@ -205,14 +205,14 @@
     min-height: 78vh;
 }
 /* Posición heading cada página del sistema */
-#Anuncios .heading, #Recomendaciones .heading, #Registrarse .heading, #IniciarSesion .heading, #Recup_contra .heading, #Apre_Inst_Admin .heading, #Planificador .heading, #Asistencia .heading, #Admin_anuncios .heading, #Admin_anuncios_edit .heading, #Admin_usuarios .heading, #Admin_usuarios_edit .heading{
+#Anuncios .heading, #Recomendaciones .heading, #Registrarse .heading, #IniciarSesion .heading, #Recup_contra .heading, #Apre_Inst_Admin .heading, #Planificador .heading, #Asistencia .heading, #Admin_anuncios .heading, #Admin_anuncios_edit .heading, #Admin_usuarios .heading, #Admin_usuarios_edit .heading, #Admin_reportes .heading{
     position: relative;
     text-align: center;
     width: 80%;
     margin: 0 auto;
 }
 /* Estilo correspondiente a cada h1 de las páginas del sistema */
-#Anuncios h1, #Recomendaciones h1, #Registrarse h1, #IniciarSesion h1, #Recup_contra h1, #Apre_Inst_Admin h1, #Planificador h1, #Asistencia h1, #Admin_anuncios h1, #Admin_anuncios_edit h1, #Admin_usuarios h1, #Admin_usuarios_edit h1{
+#Anuncios h1, #Recomendaciones h1, #Registrarse h1, #IniciarSesion h1, #Recup_contra h1, #Apre_Inst_Admin h1, #Planificador h1, #Asistencia h1, #Admin_anuncios h1, #Admin_anuncios_edit h1, #Admin_usuarios h1, #Admin_usuarios_edit h1, #Admin_reportes h1{
     color: #000;
     font-weight: 500;
     margin: 0 0 30px 0;
@@ -359,7 +359,7 @@
 }
 
 /* Estilo texto de fondo de Registro y Planificador aprendices */
-#Registrarse .heading .subtle-text, #Planificador .heading .subtle-text, #Admin_anuncios .heading .subtle-text, #Admin_anuncios_edit .heading .subtle-text, #Admin_usuarios .heading .subtle-text, #Admin_usuarios_edit .heading .subtle-text{
+#Registrarse .heading .subtle-text, #Planificador .heading .subtle-text, #Admin_anuncios .heading .subtle-text, #Admin_anuncios_edit .heading .subtle-text, #Admin_usuarios .heading .subtle-text, #Admin_usuarios_edit .heading .subtle-text, #Admin_reportes .heading .subtle-text{
     bottom: -1.6em;
     font-size: 140px;
 }
@@ -454,7 +454,7 @@
     color: #757575;
 }
 /* Estilo de los textos de fondo de la páginas planificador y asistencia */
-#Planificador .heading .subtle-text, #Asistencia .heading .subtle-text, #Admin_anuncios .heading .subtle-text{
+#Planificador .heading .subtle-text, #Asistencia .heading .subtle-text, #Admin_anuncios .heading .subtle-text, #Admin_reportes .heading .subtle-text{
     bottom: -1.5em;
     font-size: 135px;
 }
@@ -790,7 +790,7 @@ input[type=number]::-webkit-outer-spin-button {
     background-color: rgb(238, 70, 70);
 }
 
-/* Estilos que permiten al instructor confirmar o denegar la decisión de eliminar un registro de asistencia */
+/* Estilos que permiten al usuario confirmar o denegar la decisión de eliminar un registro dentro de un listado */
 .overlay {
     position:fixed;
     top: 0;
@@ -818,6 +818,7 @@ input[type=number]::-webkit-outer-spin-button {
     margin-bottom: 10px;
 }
 .confirm-box button{
+    margin-top: 50px;
     width: 60px;
     font-size: 15px;
     padding: 6px;
@@ -826,19 +827,57 @@ input[type=number]::-webkit-outer-spin-button {
     cursor: pointer;
 }
 .confirm-box #confirma{
-    background-color: #89a968;
+    background-color: #b9df91;
     margin-right: 5px;
 }
 .confirm-box #confirma:hover{
-    background-color: #65a124;
+    background-color: #82dd20;
+    transition: 0.5s ease all;
 }
 .confirm-box #denega{
-    background-color: rgb(195, 122, 122);
+    background-color: rgb(213, 134, 134);
     margin-left: 5px;
 }
 .confirm-box #denega:hover{
     background-color: rgb(238, 70, 70);
+    transition: 0.5s ease all;
 }
+.confirm-box .opcion{
+    /* margin-top: 50px; */
+    /* width:max-content; */
+    width: calc(22% + 10px);
+    font-size: 14px;
+    padding: 8px 6px;
+    /* border: 0; */
+    /* border-radius: 4px; */
+    /* cursor: pointer; */
+    background-color: #b9df91;
+    margin-right: 10px;
+}
+.confirm-box .opcion:last-child{
+    margin-right: 0;
+}
+.confirm-box .opcion:hover{
+    background-color: #82dd20;
+    transition: 1s ease all;
+}
+.confirm-box #denega{
+    margin-left: 0;
+}
+.reporteEspecifico h2{
+    margin-bottom: 25px;
+}
+.reporteEspecifico p{
+    margin-bottom: 6px;
+    /* font-size: 20px; */
+}
+.form-overlay{
+    margin-bottom: 0;
+}
+.form-overlay .opcion{
+    margin-top: 0;
+}
+
 
 
 /* Estilos aplicados a lista de anuncios mostrada a administradores */
@@ -865,6 +904,76 @@ input[type=number]::-webkit-outer-spin-button {
 #lista .img_anunc_admin{
     width: 120px;
 }
+
+/* Estilos aplicados a la página general de reportes */
+.row-reportes{
+    margin: 0 auto;
+}
+.btns_reportes{
+    margin-top: 50px;
+    display: flex;
+    flex-flow: row wrap;
+    flex-grow: 1;
+    justify-content:space-evenly;
+    /* flex-wrap: wrap; */
+    /* flex-direction: column; */
+    /* margin: 0 auto; */
+}
+.btn_reportes{
+    width: 250px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    /* justify-content: center; */
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    /* background-color: #65a124; */
+    /* background-color: #8fba61; */
+    background-color: #6ab31d;
+    color: #fff;
+    /* text-decoration-color: blue; */
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1.5;
+    transition: 0.5s ease all;
+}
+.btn_reportes:hover{
+    background-color: #a8e568;
+    /* text-decoration-color: #fff; */
+    /* color: #fff; */
+    color: #6b6b6b;
+    border-radius: 10px;
+    transition: 0.5s ease all;
+}
+/* .link-reporte{ */
+    /* text-align: center; */
+    /* width: auto; */
+    /* padding: 8px 22px; */
+    /* color: #6ab31d; */
+    /* cursor: pointer; */
+    /* border-radius: 10px; */
+/* } */
+/* .link-reporte:hover{ */
+    /* width: 20%; */
+    /* height: 10%; */
+    /* background-color: #6ab31d; */
+    /* color: #fff; */
+    /* border-radius: 10px; */
+    /* transition: 0.5s ease all; */
+    /* animation: delay duration timing-function delay iteration-count direction fill-mode; */
+/* } */
+/* .row {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.row:before, .row:after {
+    content: " ";
+    display: table;
+}
+.row:after {
+    clear: both;
+} */
 
 /* pie de cada página */
 #footer {

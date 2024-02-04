@@ -32,6 +32,7 @@ import { NavbarLogAprendizComponent } from './shared/navbar-log-aprendiz/navbar-
 import { NavbarLogInstructorComponent } from './shared/navbar-log-instructor/navbar-log-instructor.component';
 import { NavbarLogAdministradorComponent } from './shared/navbar-log-administrador/navbar-log-administrador.component';
 import { NavbarsComponent } from './shared/navbars/navbars.component';
+import { ReportesComponent } from './admin/reportes/reportes.component';
 
 
 
@@ -62,7 +63,8 @@ import { NavbarsComponent } from './shared/navbars/navbars.component';
     NavbarLogAprendizComponent,
     NavbarLogInstructorComponent,
     NavbarLogAdministradorComponent,
-    NavbarsComponent
+    NavbarsComponent,
+    ReportesComponent
   ],
   imports: [
     BrowserModule,

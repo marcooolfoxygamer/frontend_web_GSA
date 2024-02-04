@@ -70,7 +70,7 @@ export class EditarAsistenciaComponent implements OnInit {
 
         if (id_instructor == this.asistencia.id_instruc_asis) {
 
-          this.asistenciaService.validarAprendiz(this.asistencia).subscribe(data => {
+          this.asistenciaService.validarAprendiz(this.asistencia.fk_id_aprend_asis).subscribe(data => {
             if (data == 'Si existe') {
 
               if (this.id_aprend_original == this.asistencia.fk_id_aprend_asis) {

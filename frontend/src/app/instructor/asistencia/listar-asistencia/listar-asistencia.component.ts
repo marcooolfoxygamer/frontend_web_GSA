@@ -14,7 +14,7 @@ export class ListarAsistenciaComponent implements OnInit {
 
   asistencias: Observable<AsistenciaListaModel[]> | undefined;
 
-  public oculto = true
+  public oculto = true;
   public id_reg:any;
 
   constructor(
@@ -33,6 +33,8 @@ export class ListarAsistenciaComponent implements OnInit {
     
     this.asistencias = this.asistenciaService.obtenerAsistencias();
   }
+
+  // Pop-up eliminación
 
   showConfirmBox(id_r:any) {
     this.id_reg = id_r

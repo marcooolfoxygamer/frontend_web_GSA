@@ -18,6 +18,7 @@ import { BienvenidaInstructorComponent } from './instructor/bienvenida-instructo
 import { AgregarAsistenciaComponent } from './instructor/asistencia/agregar-asistencia/agregar-asistencia.component';
 import { ListarAsistenciaComponent } from './instructor/asistencia/listar-asistencia/listar-asistencia.component';
 import { EditarAsistenciaComponent } from './instructor/asistencia/editar-asistencia/editar-asistencia.component';
+import { ReportesComponent } from './admin/reportes/reportes.component';
 
 export const routes: Routes = [
   { path: 'inicio', component: InicioComponent },
@@ -38,6 +39,7 @@ export const routes: Routes = [
   { path: 'asistencia_agregar', component: AgregarAsistenciaComponent },
   { path: 'asistencia_listado', component: ListarAsistenciaComponent },
   { path: 'asistencia_edicion/:id_registro_asis', component: EditarAsistenciaComponent },
+  { path: 'reportes', component: ReportesComponent },
   { path: '', pathMatch: 'full', redirectTo: '/inicio' },
   { path: '**', pathMatch: 'full', redirectTo: '/inicio' }
 

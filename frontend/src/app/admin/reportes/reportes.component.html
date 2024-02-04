@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de reportes</title>
+</head>
+<body>
+  <app-navbars></app-navbars>
+    <!-- <div class="navbar">
+        <img src="../../../../assets/images/Logo_GsA-removebg-preview.png" class="logo">
+        <ul>
+            <li><a routerLink="../home">Inicio</a></li>
+            <li><a routerLink="../anuncios">Anuncios</a></li>
+            <li><a routerLink="../recomendaciones">Recomendaciones</a></li>
+            <li><a routerLink="../admin">Mis actividades</a></li>
+            <li id="liFinLinea"><a (click)="this.sessionStorageService.clear()">Cerrar Sesion</a></li>
+        </ul>
+    </div> -->
+    
+    <section id="Admin_reportes">
+		<div class="container">
+		  	<div class="row row-pb-md">
+		  		<div class="col-md-8 heading">
+		  			<h1>Generador de reportes</h1>
+		  			<p class="sub">En este espacio puede generar reportes de las actividades que se realizan dentro del sistema</p>
+                    <!-- <p class="sub">Puede agregar o actualizar anuncios si así lo requiere...</p> -->
+                    <!-- <p class="sub-doub"><a [routerLink]="['../anuncios_agregar/']" class="link-db" id="a-volverAsist">Agregar un nuevo anuncio</a></p> -->
+		  		</div>
+		  	</div>
+		  	<div class="row-reportes">
+		  		<div class="cont-r">
+                    <div class="btns_reportes">
+                        <a class="btn_reportes" (click)='showConfirmBoxReporte("rutinas")'>Generar reporte de rutinas de aprendices</a>
+                        <a class="btn_reportes" (click)='showConfirmBoxReporte("asistencias")'>Generar reporte de asistencias</a>
+                        <a class="btn_reportes" (click)='showConfirmBoxReporte("usuarios")'>Generar reporte de usuarios</a>
+                    </div>
+
+                    <div class='overlay' id="overl" [hidden]="ocultoPopReporte">
+                        <div class='confirm-box'>
+                            <h2>Generar reporte</h2>
+                            <p>¿Qué tipo de reporte desea generar?</p>
+                            <br>
+                            <button class="opcion" (click)="isConfirmReporteGeneral()">General</button>
+                            <button class="opcion" (click)="isConfirmReporteEspecificoId()">Identificación específica</button>
+                            <button *ngIf="tematicaReporte == 'asistencias'" class="opcion" (click)="isConfirmReporteEspecificoFecha()">Fecha especifica</button>
+                            <button class="opcion" id='denega' (click)='closeConfirmBoxReporte()'>Salir</button>
+                        </div>
+                    </div>
+      
+                    <div class='overlay' id="overl" [hidden]="ocultoPopReporteEspecificoId">
+                        <div class='confirm-box reporteEspecifico'>
+                            <h2>Generar reporte específico</h2>
+                            <p>Indique la identificación del {{user_reporte_especifico}}</p>
+                            <br>
+                            <form class="form-overlay">
+                                <!-- <div class="form-group">
+                                    <label for="correo_sena_Recup_contra" class="sr-only"></label>
+                                    <input type="email" class="form-control ini" placeholder="Correo electrónico (brindado por el sena y con el que se registró)" id="correo_sena_Recup_contra" name="correo" [(ngModel)]="usuario.correo_sena_user" required>
+                                </div> -->
+                                <div class="form-group">
+                                    <label for="num_identificacion" class="sr-only">Número de identificación</label>
+                                    <input type="number" class="form-control ini" placeholder="Número de identificación" id="num_identificacion" name="identificacion" [(ngModel)]="id_usuario_reporte" required>
+                                </div>
+                                <!-- <div class="form-group-ini" style="margin-top: 3%;">
+                                    <button type="submit" value="Recuperar_contraseña" class="Subm Recup_contra" id="submit-Recup_contra" name="recuperar_contra">Recuperar contraseña</button>
+                                </div> -->
+                                <br>
+                                <button class="opcion" id='confirma' (click)="GenerarReporteEspecificoId()">Generar</button>
+                                <!-- <button id='confirma' (click)="isConfirmReporteEspecificoPorId()">Generar</button> -->
+                                <button class="opcion" id='denega' (click)='closeConfirmBoxReporteEspecifico()'>Cancelar</button>
+                            </form>
+                            <!-- <p><input type="number"></p> -->
+                        </div>
+                    </div>
+
+                    <!-- <div class='overlay' id="overl" [hidden]="ocultoPopReporteEspecificoAsistenciaId">
+                        <div class='confirm-box'>
+                            <br>
+                            <h2>Generar reporte específico</h2>
+                            <p>Indique la identificación del aprendiz</p>
+                            <br>
+                            <form>
+                                
+                                <div class="form-group">
+                                    <label for="num_identificacion" class="sr-only">Número de identificación</label>
+                                    <input type="number" class="form-control ini" placeholder="Número de identificación" id="num_identificacion" name="identificacion" [(ngModel)]="id_usuario_reporte" required>
+                                </div>
+                                
+                                <br>
+                                <button id='confirma' (click)="isConfirmReporteEspecificoPorId()">Generar</button>
+                                
+                                <button id='denega' (click)='closeConfirmBoxReporteEspecifico()'>Cancelar</button>
+                            </form>
+                            
+                        </div>
+                    </div> -->
+
+                    <div class='overlay' id="overl" [hidden]="ocultoPopReporteEspecificoAsistenciaFecha">
+                        <div class='confirm-box reporteEspecifico'>
+                            <h2>Generar reporte específico</h2>
+                            <p>Indique la fecha de la que desea obtener las asistencias</p>
+                            <br>
+                            <form class="form-overlay">
+                                <!-- <div class="form-group">
+                                    <label for="correo_sena_Recup_contra" class="sr-only"></label>
+                                    <input type="email" class="form-control ini" placeholder="Correo electrónico (brindado por el sena y con el que se registró)" id="correo_sena_Recup_contra" name="correo" [(ngModel)]="usuario.correo_sena_user" required>
+                                </div> -->
+                                <div class="form-group">
+                                    <label for="num_identificacion" class="sr-only">Fecha</label>
+    						        <input type='date' class='form-control' placeholder='Fecha' id='num_identificacion' name='fecha' [(ngModel)]="fecha_asistencia" required>
+                                    <!-- <label for="fecha" class="sr-only">Número de identificación</label>
+                                    <input type="number" class="form-control ini" placeholder="Número de identificación" id="num_identificacion" name="identificacion" [(ngModel)]="id_usuario_reporte" required> -->
+                                </div>
+                                <!-- <div class="form-group-ini" style="margin-top: 3%;">
+                                    <button type="submit" value="Recuperar_contraseña" class="Subm Recup_contra" id="submit-Recup_contra" name="recuperar_contra">Recuperar contraseña</button>
+                                </div> -->
+                                <br>
+                                <button class="opcion" id='confirma' (click)="GenerarReporteEspecificoFecha()">Generar</button>
+                                <!-- <button id='confirma' (click)="isConfirmReporteEspecificoPorId()">Generar</button> -->
+                                <button class="opcion" id='denega' (click)='closeConfirmBoxReporteEspecifico()'>Cancelar</button>
+                            </form>
+                            <!-- <p><input type="number"></p> -->
+                        </div>
+                    </div>
+                    <!--
+                    <table id="lista" class="txt_anunc">
+                        <thead>
+                            <tr>
+                                <th class="col admin_anunc_imagenes">Imagen</th>
+                                <th class="col">Identificación administrador creador</th>
+                                <th class="col">Titulo anuncio</th>
+                                <th class="col">Descripción anuncio</th>
+                                <th class="col admin_anunc_acciones" colspan="2">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let anuncio of anuncios | async">
+                                <td class='tds'><img [src]="url+anuncio.img_anunc"  alt='' class='img_anunc_admin'></td>
+                                <td class='tds'>{{ anuncio.fk_id_admin_anunc }}</td>
+                                <td class='tds'>{{ anuncio.titulo_anunc }}</td>
+                                <td class='tds'>{{ anuncio.desc_anunc }}</td>
+                                <td class='tds'><a [routerLink]="['../anuncios_edicion/',anuncio.id_anunc]"><button type='button' class='btn btn-update'>Editar</button></a></td>
+                                <td class='tds'><button type='button' class='btn btn-delete' (click)='showConfirmBox(anuncio.id_anunc)'>Eliminar</button></td>
+
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+                    -->
+		  		</div>
+		  	</div>
+		</div>
+	  </section>
+  <app-footer></app-footer>
+</body>
+</html>

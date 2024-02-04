@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AsistenciaListaModel } from './asistencia.model';
 import { AsistenciaModel } from './asistencia.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,10 @@ export class AsistenciaService {
 
   constructor(private http: HttpClient) { }
 
+  validarExistenciaAsistencias() {
+    return this.http.get<string>(this.BASE_URL+'/validacion_existencia_asistencias')
+  }
+
   obtenerAsistencias() {
     return this.http.get<AsistenciaListaModel[]>(this.BASE_URL+'/asistencia_listado');
   }
@@ -20,8 +25,16 @@ export class AsistenciaService {
     return this.http.get<AsistenciaModel[]>(`${this.BASE_URL}/asistencia_listado/${id_registro_asis}`)
   }
 
-  validarAprendiz(asistencia: AsistenciaModel) {
-    return this.http.post<string>(`${this.BASE_URL}/asistencia_listado_aprend`, asistencia)
+  validarAprendiz(fk_id_aprend_asis: string) {
+    return this.http.get<string>(`${this.BASE_URL}/asistencia_listado_aprend/${fk_id_aprend_asis}`)
+  }
+
+  validarExistenciaAsistenciasId(fk_id_aprend_asis: string) {
+    return this.http.get<string>(`${this.BASE_URL}/validacion_existencia_asistencias_id/${fk_id_aprend_asis}`)
+  }
+
+  validarExistenciaAsistenciasFecha(fecha_asis: string) {
+    return this.http.get<string>(`${this.BASE_URL}/validacion_existencia_asistencias_fecha/${fecha_asis}`)
   }
 
   agregarAsistencia(asistencia: AsistenciaModel) {
@@ -34,5 +47,17 @@ export class AsistenciaService {
 
   eliminarAsistencia(id_registro_asis: string) {
     return this.http.delete<string>(`${this.BASE_URL}/asistencia_eliminacion/${id_registro_asis}`)
+  }
+
+  obtenerReporteGeneralAsistencias() {
+    return this.http.get(this.BASE_URL+'/asistencia_reporte', {observe: 'response', responseType: 'blob'})
+  }
+
+  obtenerReporteEspecificoAsistenciaId(id_user: string) {
+    return this.http.get(this.BASE_URL+`/asistencia_reporte_id/${id_user}`, {observe: 'response', responseType: 'blob'})
+  }
+
+  obtenerReporteEspecificoAsistenciaFecha(fecha_asis: string) {
+    return this.http.get(this.BASE_URL+`/asistencia_reporte_fecha/${fecha_asis}`, {observe: 'response', responseType: 'blob'})
   }
 }

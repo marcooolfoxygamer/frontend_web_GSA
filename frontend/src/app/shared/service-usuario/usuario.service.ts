@@ -31,8 +31,16 @@ export class UsuarioService {
     return this.http.put<string>(`${this.BASE_URL}/validar_rec_contrasena/${usuario.id_user}`, usuario)
   }
 
+  validarExistenciaUsuarios() {
+    return this.http.get<string>(this.BASE_URL+'/validacion_existencia_usuarios')
+  }
+
   obtenerUsuarios() {
     return this.http.get<UsuarioModel[]>(this.BASE_URL+'/usuarios_listado');
+  }
+
+  validarExistenciaUsuario(id_user: string) {
+    return this.http.get<string>(this.BASE_URL+`/validacion_existencia_usuarios/${id_user}`)
   }
 
   obtenerUsuario(id_user: string) {
@@ -53,5 +61,13 @@ export class UsuarioService {
 
   actualizarUsuario(usuario: UsuarioModel) {
     return this.http.put<string>(`${this.BASE_URL}/usuarios_edicion/${usuario.id_user}`, usuario)
+  }
+
+  obtenerReporteGeneralUsuarios() {
+    return this.http.get(this.BASE_URL+'/usuarios_reporte', {observe: 'response', responseType: 'blob'})
+  }
+
+  obtenerReporteEspecificoUsuario(id_user: string) {
+    return this.http.get(this.BASE_URL+`/usuarios_reporte/${id_user}`, {observe: 'response', responseType: 'blob'})
   }
 }

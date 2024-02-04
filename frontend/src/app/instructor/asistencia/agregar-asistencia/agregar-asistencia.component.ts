@@ -48,7 +48,7 @@ export class AgregarAsistenciaComponent implements OnInit {
 
       if (id_instructor == this.asistencia.id_instruc_asis) {
 
-        this.asistenciaService.validarAprendiz(this.asistencia).subscribe(data => {
+        this.asistenciaService.validarAprendiz(this.asistencia.fk_id_aprend_asis).subscribe(data => {
           if (data == 'Si existe') {
             this.asistenciaService.agregarAsistencia(this.asistencia).subscribe(data => {
               alert(data)
