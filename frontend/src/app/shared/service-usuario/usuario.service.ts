@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UsuarioModel, TiposUsuarios, Antecedentes } from './usuario.model';
+import { EMPTY, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,11 @@ export class UsuarioService {
   constructor(private http: HttpClient) { }
 
   obtenerTiposUsuarios() {
-    return this.http.get<TiposUsuarios[]>(this.BASE_URL+'/tipos_usuarios');
+    return this.http.get<TiposUsuarios[]>(this.BASE_URL+'/tipos_usuarios')
   }
 
   obtenerAntecedentes() {
-    return this.http.get<Antecedentes[]>(this.BASE_URL+'/antecedentes');
+    return this.http.get<Antecedentes[]>(this.BASE_URL+'/antecedentes')
   }
 
   validarCorreo(usuario: UsuarioModel) {
@@ -36,7 +37,7 @@ export class UsuarioService {
   }
 
   obtenerUsuarios() {
-    return this.http.get<UsuarioModel[]>(this.BASE_URL+'/usuarios_listado');
+    return this.http.get<UsuarioModel[]>(this.BASE_URL+'/usuarios_listado')
   }
 
   validarExistenciaUsuario(id_user: string) {
@@ -48,7 +49,7 @@ export class UsuarioService {
   }
 
   agregarUsuario(usuario: UsuarioModel) {
-    return this.http.post<string>(`${this.BASE_URL}/registrarse`, usuario);
+    return this.http.post<string>(`${this.BASE_URL}/registrarse`, usuario)
   }
 
   iniciarSesion(usuario: UsuarioModel) {
@@ -69,5 +70,30 @@ export class UsuarioService {
 
   obtenerReporteEspecificoUsuario(id_user: string) {
     return this.http.get(this.BASE_URL+`/usuarios_reporte/${id_user}`, {observe: 'response', responseType: 'blob'})
+  }
+
+  filterListadoUsuariosId(id_user: string) {
+    // this.obtenerUsuario(id_user).pipe(map((usuario: UsuarioModel) => usuario.map(usuario => usuario.address)))
+    return this.http.get<UsuarioModel[]>(`${this.BASE_URL}/usuarios_listado_filtrado_id/${id_user}`)
+
+
+    // const direccion = this.BASE_URL+`/usuarios_listado_filtrado/${id_user}`
+    // return this.http.get<UsuarioModel[]>(direccion)
+    //   .pipe(
+    //   map( (res:UsuarioModel[]) => res),
+    //   catchError(() => EMPTY)
+    //   )
+  }
+
+  filterListadoUsuariosNombre1(nom1_user: string) {
+    return this.http.get<UsuarioModel[]>(`${this.BASE_URL}/usuarios_listado_filtrado_nombre1/${nom1_user}`)
+  }
+
+  filterListadoUsuariosNombres(usuario: UsuarioModel) {
+    return this.http.post<UsuarioModel[]>(`${this.BASE_URL}/usuarios_listado_filtrado_nombres`, usuario)
+  }
+  
+  filterListadoUsuariosRol(tipo_user: string) {
+    return this.http.get<UsuarioModel[]>(`${this.BASE_URL}/usuarios_listado_filtrado_rol/${tipo_user}`)
   }
 }

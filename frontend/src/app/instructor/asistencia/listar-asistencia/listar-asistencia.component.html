@@ -19,7 +19,7 @@
         </ul>
     </div> -->
     
-    <section id="Asistencia">
+    <section id="Asistencia_listado">
 		<div class="container">
 			<div class="row row-pb-md">
 				<div class="col-md-8 heading">
@@ -31,6 +31,22 @@
 			</div>
 			<div class="row">
 				<div class="cont-r">
+          <div class="form-group">
+            <select class="form-control op" placeholder="Buscar" id="estado_user" name="busquedaFiltrar" [(ngModel)]="busquedaFiltrar" (ngModelChange)="buscarTodos()" required>
+              <option value="" disabled="disabled">Buscar</option>
+              <option value="todos">Todos los registros</option>
+              <option value="idAprendiz">Identificación Aprendiz</option>
+              <option value="idInstructor">Identificación Instructor</option>
+              <option value="nombre">Nombre y Apellido del Aprendiz</option>
+              <option value="fecha">Fecha</option>
+            </select>
+            
+            <input type="number" *ngIf="busquedaFiltrar == 'idAprendiz'" class="form-control ini" placeholder="Digite el número de identificación del aprendiz" id="filtroId" name="filtrarIdAprendiz" [(ngModel)]="filtrarIdAprendiz" (input)="buscarIdAprendiz()">
+            <input type="number" *ngIf="busquedaFiltrar == 'idInstructor'" class="form-control ini" placeholder="Digite el número de identificación del instructor" id="filtroId" name="filtrarIdInstructor" [(ngModel)]="filtrarIdInstructor" (input)="buscarIdInstructor()">
+            <input type="text" *ngIf="busquedaFiltrar == 'nombre'" class="form-control ini" placeholder="Digite el primer nombre y primer apellido del aprendiz a buscar" id="filtroId" name="filtrarNombre" [(ngModel)]="filtrarNombre" (input)="buscarNombre()">
+            <input type="date" *ngIf="busquedaFiltrar == 'fecha'" class="form-control ini" placeholder="Seleccione la fecha a buscar" id="filtroId" name="filtrarFecha" [(ngModel)]="filtrarFecha" (input)="buscarFecha()">
+
+          </div>
           <table id="lista_asistencia">
             <thead>
               <tr>

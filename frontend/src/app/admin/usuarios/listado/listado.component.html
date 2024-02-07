@@ -25,11 +25,32 @@
 				<div class="col-md-8 heading">
 					<h1>Listado de usuarios</h1>
 					<p class="sub-doub">En este espacio tiene completo acceso a la lista de usuarios registrados en el sistema</p>
-                    <p class="sub">Puede actualizar información si así lo requiere...</p>
+          <p class="sub">Puede actualizar información si así lo requiere...</p>
 				</div>
 			</div>
 			<div class="row">
 				<div class="cont-r">
+          <div class="form-group">
+            <select class="form-control op" placeholder="Buscar" id="estado_user" name="busquedaFiltrar" [(ngModel)]="busquedaFiltrar" (ngModelChange)="buscarTodos()" required>
+              <option value="" disabled="disabled">Buscar</option>
+              <option value="todos">Todos los registros</option>
+              <option value="id">Identificación</option>
+              <option value="nombre">Nombre y Apellido</option>
+              <option value="rol">Rol</option>
+            </select>
+            <input type="number" *ngIf="busquedaFiltrar == 'id'" class="form-control ini" placeholder="Digite el número de identificación del usuario a buscar" id="filtroId" name="filtrarId" [(ngModel)]="filtrarId" (input)="buscarId()">
+            <input type="text" *ngIf="busquedaFiltrar == 'nombre'" class="form-control ini" placeholder="Digite el primer nombre y primer apellido del usuario a buscar" id="filtroId" name="filtrarNombre" [(ngModel)]="filtrarNombre" (input)="buscarNombre()">
+            <!-- <select class="form-control op" placeholder="Seleccione el rol a buscar" id="estado_user" name="filtrarRol" [(ngModel)]="filtrarRol" (input)="buscarRol()" required>
+              <option value="" disabled="disabled">Seleccione el rol a buscar</option>
+              <option value="1">Administrador</option>
+              <option value="2">aprendiz</option>
+              <option value="3">Instructor</option>
+            </select> -->
+            <select *ngIf="busquedaFiltrar == 'rol'" class="form-control op" placeholder="Seleccione el rol a buscar" id="estado_user" name="filtrarRol" [(ngModel)]="filtrarRol" (ngModelChange)="buscarRol()" required>
+              <option value="" disabled="disabled">Seleccione el rol a buscar</option>
+              <option *ngFor="let rol of tiposusuarios | async" value='{{rol.cod_tipo_user}}'>{{rol.tipo_user}}</option>
+            </select>
+          </div>
           <table id="lista_asistencia">
             <thead>
               <tr>
@@ -46,7 +67,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let usuario of usuarios | async">
+              <tr *ngFor="let usuario of usuarios$ | async">
                 <td class="tds">{{ usuario.id_user }}</td>
                 <td class="tds">{{ usuario.tipo_user }}</td>
                 <td class="tds">{{ usuario.nom1_user }}</td>

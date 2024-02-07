@@ -60,4 +60,24 @@ export class AsistenciaService {
   obtenerReporteEspecificoAsistenciaFecha(fecha_asis: string) {
     return this.http.get(this.BASE_URL+`/asistencia_reporte_fecha/${fecha_asis}`, {observe: 'response', responseType: 'blob'})
   }
+
+  filterListadoAsistenciasIdInstructor(id_instruc_asis: string) {
+    return this.http.get<AsistenciaListaModel[]>(`${this.BASE_URL}/asistencia_listado_filtrado_id_instructor/${id_instruc_asis}`)
+  }
+
+  filterListadoAsistenciasIdAprendiz(fk_id_aprend_asis: string) {
+    return this.http.get<AsistenciaListaModel[]>(`${this.BASE_URL}/asistencia_listado_filtrado_id_aprendiz/${fk_id_aprend_asis}`)
+  }
+
+  filterListadoAsistenciasNombre1(nom1_user: string) {
+    return this.http.get<AsistenciaListaModel[]>(`${this.BASE_URL}/asistencia_listado_filtrado_nombre1/${nom1_user}`)
+  }
+
+  filterListadoAsistenciasNombres(asistencia: AsistenciaListaModel) {
+    return this.http.post<AsistenciaListaModel[]>(`${this.BASE_URL}/asistencia_listado_filtrado_nombres`, asistencia)
+  }
+
+  filterListadoAsistenciasFecha(fecha_asis: string) {
+    return this.http.get<AsistenciaListaModel[]>(`${this.BASE_URL}/asistencia_listado_filtrado_fecha/${fecha_asis}`)
+  }
 }
