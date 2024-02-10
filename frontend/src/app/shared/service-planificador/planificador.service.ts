@@ -7,7 +7,7 @@ import { PlanificadorModel, MusculosModel, Ejercicios_MusculosModel } from './pl
 })
 export class PlanificadorService {
 
-  BASE_URL = "http://localhost:9300"
+  BASE_URL = "https://gsa-api.onrender.com"
 
   constructor(private http: HttpClient) { }
 
