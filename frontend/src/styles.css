@@ -800,6 +800,15 @@ input[type=number]::-webkit-outer-spin-button {
     background: rgba(0, 0, 0, 0.456);
     z-index: 20;
 }
+.overlay-asistencia {
+    position:fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(17, 17, 17, 0.183);
+    z-index: 20;
+}
 .confirm-box {
     position:fixed;
     width: 50%;
@@ -809,13 +818,22 @@ input[type=number]::-webkit-outer-spin-button {
     text-align: center;
     background: white;
 }
+.overlay-asistencia .confirm-box {
+    color: rgb(119, 119, 119);
+}
 .confirm-box h2{
     margin: 50px 0;
     font-size: 32px;
 }
+.overlay-asistencia h2{
+    margin-top: 70px;
+}
 .confirm-box p{
     font-size: 18px;
     margin-bottom: 10px;
+}
+.overlay-asistencia p{
+    margin-top: 65px;
 }
 .confirm-box button{
     margin-top: 50px;
@@ -825,6 +843,9 @@ input[type=number]::-webkit-outer-spin-button {
     border: 0;
     border-radius: 4px;
     cursor: pointer;
+}
+.overlay-asistencia button{
+    margin-top: 65px;
 }
 .confirm-box #confirma{
     background-color: #b9df91;

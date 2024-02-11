@@ -76,7 +76,7 @@
                 <td class='tds'><a [routerLink]="['../asistencia_edicion/', asist.id_registro_asis]"><button type='button' class='btn btn-update'>Editar</button></a></td>
                 <td class='tds'><button type='button' class='btn btn-delete' (click)='showConfirmBox(asist.id_registro_asis)'>Eliminar</button></td>
                 
-                <div class='overlay' id="overl" [hidden]="oculto">
+                <div class='overlay-asistencia' id="overl" [hidden]="oculto">
                   <div class='confirm-box'>
                     <br>
                     <h2>Confirmación de decisión</h2>

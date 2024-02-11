@@ -8,6 +8,7 @@ import { AnuncioModel } from './anuncio.model';
 export class AnuncioService {
 
   BASE_URL = "https://gsa-api.onrender.com"
+  // BASE_URL = "http://localhost:9300"
 
   constructor(private http: HttpClient) { }
 

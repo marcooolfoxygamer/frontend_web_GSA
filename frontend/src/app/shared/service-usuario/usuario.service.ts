@@ -9,6 +9,7 @@ import { EMPTY, Observable } from 'rxjs';
 export class UsuarioService {
 
   BASE_URL = "https://gsa-api.onrender.com"
+  // BASE_URL = "http://localhost:9300"
 
   constructor(private http: HttpClient) { }
 
