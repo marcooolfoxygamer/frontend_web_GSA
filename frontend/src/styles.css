@@ -4,24 +4,6 @@
     font-family: sans-serif;
 }
 
-/* Inicio */
-.banner{
-    width: 100%;
-    height: 100vh;
-    background-image: linear-gradient(rgba(230, 230, 230, 0.75),rgba(230, 230, 230, 0.75));
-    background-size: cover;
-    background-position: center;
-}
-/* isologo GSA en inicio */
-#img-bg-ind{
-    position:relative;
-    display: flex;
-    margin: 40px auto 0 auto;
-    z-index: 6;
-    /* width: 350px; */
-    width: calc(35% - 100px);
-}
-
 /* Barra de Navegación */
 .navbar{
     width: 100%;
@@ -92,9 +74,9 @@
     #img-bg-ind{
         width: 50%;
     } */
-    #img-bg-ind{
+    /* #img-bg-ind{
         width: calc(50% - 130px);
-    }
+    } */
     .navbar ul{
         /* position:fixed; */
         position: absolute;
@@ -150,37 +132,16 @@
     }
 }
 
-@media screen and (max-width: 500px) {
+/* @media screen and (max-width: 500px) {
     #img-bg-ind{
         width: calc(90% - 180px);
     }
-}
+} */
 
 /* Selección de texto en página de color verde y color de teto a blanco */
 ::selection {
     color: #fff;
     background: #7ED321;
-}
-
-/* Contenido de inicio (titulo y texto subtitulo) */
-.contenido{
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    text-align: center;
-    color: rgb(18, 18, 18);
-}
-/* Titulo inicio */
-.contenido h1{
-    font-size: 90px;
-    margin-top: 20px;
-}
-/* Texto subtitulo h3 inicio */
-.contenido h3{
-    font-weight: bolder;
-    margin: 20px auto;
-    font-size: 22px;
 }
 
 /* Contenedor de la información que corresponde a cada página */
@@ -191,6 +152,64 @@
     padding-right: 15px;
     position: relative;
     z-index: 10;
+}
+
+/* Inicio */
+.banner{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(230, 230, 230, 0.75),rgba(230, 230, 230, 0.75));
+    background-size: cover;
+    background-position: center;
+}
+/* Contenido de inicio (imagen principal y texto subtítulo) */
+.contenido{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: column; */
+    /* justify-content:flex-start; */
+    /* align-items:flex-end; */
+    /* align-content: flex-end; */
+    /* width: 100%; */
+    /* position: absolute; */
+    /* top: 50%; */
+    /* transform: translateY(-50%); */
+    text-align: center;
+    color: rgb(18, 18, 18);
+}
+/* isologo GSA en inicio */
+#cont_img_bg_ind{
+    /* margin: 0 auto; */
+    /* flex: 1; */
+    /* display: flex; */
+    /* margin: 20% auto 0 auto; */
+    /* margin-top: 20%; */
+    width: calc(30% - 120px);
+    /* max-width: ; */
+    /* width: 50%; */
+    /* height: 80%; */
+    /* background-color: #a8e568; */
+}
+#img-bg-ind{
+    width: 100%;
+    /* position:relative; */
+    /* display: flex; */
+    /* margin:10% auto 0 auto; */
+    /* z-index: 6; */
+    /* width: 350px; */
+    /* width: calc(100% - 120px); */
+    /* height: calc(35% - 600px); */
+}
+/* Texto subtitulo h3 inicio */
+.contenido h3{
+    /* flex: 1; */
+    font-weight: bolder;
+    margin: 20px auto;
+    font-size: 22px;
 }
 
 /* Espacios de compartimentos para cada espacio (o página) dentro del sistema */
@@ -658,10 +677,12 @@ input[type=number]::-webkit-outer-spin-button {
 .ejercicio{
     border: 1px solid #ccc;
     flex-grow: 1;
-    flex-basis: 220px;
+    flex-basis: 280px;
     margin-bottom: 25px;
     margin-right: 10px;
     margin-left: 10px;
+    padding: 10px;
+    max-width: 50%;
 }
 /* Estilo aplicado a las imágenes que ejemplifiquen los ejercicios que el aprendiz puede desarrollar según el músculo elegido */
 .ejercicio img{
@@ -669,22 +690,24 @@ input[type=number]::-webkit-outer-spin-button {
 }
 /* Estilo aplicado al texto que describe los ejericios que el aprendiz puede desarrollar según el músculo elegido */
 .ejercicio-info{
-    padding: 0 30px 20px 30px;
+    padding: 0 20px 20px 20px;
 }
 /* Estilo específico aplicado al texto que explique los ejercicios que el aprendiz puede desarrollar según el músculo elegido */
-.project-info p{
+/* .project-info p{
     font-size: 8px;
     color: gray;    
-}
+} */
 /* Estilo de texto de los títulos dentro de cada opción de ejercicio a desarrollar según el músculo elegido por el aprendiz */
 .ej-inf-p1{
-    font-size: 24px;
+    /* font-size: calc(1vw + 1vh + 1vmin); */
+    font-size: calc(0.8rem + 0.8vw);
     color: #7ED321;
 }
 .ej-inf-p2{
     margin: 15px 0;
     padding: 0 22px 0 6px;
-    font-size: 16px;
+    font-size: calc(0.5rem + 0.5vw);
+    /* font-size: 16px; */
 }
 
 /* Configuraciones aplicadas al contenedor que tiene dentro los datos que se tomarán para el registro de asistencia de los aprendices al gimnasio */
