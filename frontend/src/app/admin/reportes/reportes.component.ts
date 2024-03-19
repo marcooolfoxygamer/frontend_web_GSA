@@ -133,6 +133,9 @@ export class ReportesComponent implements OnInit {
     if (this.tematicaReporte == "usuarios") {
       this.user_reporte_especifico = 'usuario'
     }
+    else {
+      this.user_reporte_especifico = 'aprendiz'
+    }
   }
 
   isConfirmReporteEspecificoFecha() {
