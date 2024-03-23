@@ -26,22 +26,22 @@ export class RegistrarseComponent implements OnInit {
 
   onSubmit() {
 
-    if (this.usuario.nom1_user == '') {
+    if (!this.usuario.nom1_user) {
       alert("Por favor, digite su primer nombre");
     }
-    else if (this.usuario.ape1_user == '') {
+    else if (!this.usuario.ape1_user) {
       alert("Por favor, digite su primer apellido");
     }
-    else if (this.usuario.correo_sena_user == '') {
+    else if (!this.usuario.correo_sena_user) {
       alert("Por favor, digite su correo electrónico");
     }
-    else if (this.usuario.id_user == '') {
+    else if (!this.usuario.id_user) {
       alert("Por favor, digite su número de identificación");
     }
-    else if (this.usuario.contrasena == '') {
+    else if (!this.usuario.contrasena) {
       alert("Por favor, digite la contraseña que le pondrá a su cuenta");
     }
-    else if (this.usuario.fk_anteced_salud_sel == '') {
+    else if (!this.usuario.fk_anteced_salud_sel) {
       alert("Por favor, escoja una de las opciones del selector de antecedentes");
     }
     else {
